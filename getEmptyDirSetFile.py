@@ -19,7 +19,7 @@ def getfilelist(filepath, tabnum=1):
             dir = os.listdir(filepath + "/" + filename)
             if dir == []:
                 print filepath + "/" + filename
-                o = open(filepath + "/" + filename+"/t", "w+")
+                o = open(filepath + "/" + filename+"/.null", "w+")
                 o.writelines("")
                 o.close()
             #print dir
@@ -39,17 +39,17 @@ def getfilelist(filepath, tabnum=1):
     return returnstr + "\t" * tabnum + "</>\n"
 
 
-path = raw_input("请输入文件路径:")
+path = raw_input("please input project path:")
 usefulpath = path.replace('\\', '/')
 if usefulpath.endswith("/"):
     usefulpath = usefulpath[:-1]
 if not os.path.exists(usefulpath):
-    print "路径错误!"
+    print "path error!"
 elif not os.path.isdir(usefulpath):
-    print "输入的不是目录!"
+    print "path is not a dir!"
 else:
     filelist = os.listdir(usefulpath)
-    o = open("test.xml", "w+")
+    o = open("root.xml", "w+")
     o.writelines(getfilelist(usefulpath))
     o.close()
-    print "成功！请查看test.xml文件"
+    print "please check root.xml"
